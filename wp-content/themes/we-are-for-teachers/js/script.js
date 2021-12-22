@@ -3,7 +3,7 @@
   // Slider Congratulations
   $('.congratulations__slider').slick({
     speed: 1500,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     arrows: true,
     dots: true,
@@ -96,11 +96,14 @@
   $(window).on('scroll', function () {
     let header = $('.header').height();
     let promo = $('.promo').height();
-    let navigation = $('.nav').height();
-    if ($(this).scrollTop() > (header + promo + navigation)) {
+    let navigation = 248;
+    let wpadminbar = $('#wpadminbar').height();
+    if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
+      $('.nav').addClass('nav--sticky');
       $('.nav .inner').addClass('inner--sticky');
       $('.nav__camera-roll').addClass('nav__camera-roll--hidden');
     } else {
+      $('.nav').removeClass('nav--sticky');
       $('.nav .inner').removeClass('inner--sticky');
       $('.nav__camera-roll').removeClass('nav__camera-roll--hidden');
     }
@@ -123,16 +126,35 @@
   $('.congratulations__video').each(function () {
     let href = $(this).attr('data-href'),
         videoID = href.substring(href.indexOf('v=') + 2, href.indexOf('v=') + 13);
-    $(this).attr('src', 'https://www.youtube.com/embed/' + videoID);
+    $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
+
+    // Autoplay/stop YouTube video if mouse focus on/off
+    $(this).on('mouseover', function () {
+      this.contentWindow.postMessage(JSON.stringify({
+        "event": "command",
+        "func": "playVideo",
+        "args": ""
+      }), "*");
+      $(this).closest('.congratulations__item').find('.congratulations__photo').toggleClass('congratulations__photo--hidden');
+    });
+
+    $(this).on('mouseout', function () {
+      this.contentWindow.postMessage(JSON.stringify({
+        "event": "command",
+        "func": "pauseVideo",
+        "args": ""
+      }), "*");
+      $(this).closest('.congratulations__item').find('.congratulations__photo').toggleClass('congratulations__photo--hidden');
+    });
   });
 
   // Add trigger some events
   $(document).ready(function () {
-    $(window).trigger('scroll');
-
     // Main Menu position if decor image not exists
     if (!$('.nav__camera-roll').length) {
       $('.nav__menu').toggleClass('nav__menu--center-mode');
     }
+    $(window).trigger('scroll');
   });
+
 })(jQuery);

@@ -334,15 +334,22 @@ a {
   }
 }
 
-#wpadminbar + header + main .nav {
-  top: 32px;
-}
-
 .nav {
-  position: sticky;
-  top: 0;
+  /*position: static;*/
   z-index: 3;
   background-color: #612b1c;
+
+  top: -80px;
+  transition-duration: 1s;
+}
+
+.nav--sticky {
+  position: sticky;
+  top: 0;
+}
+
+#wpadminbar + header + main .nav--sticky {
+  top: 32px;
 }
 
 @media screen and (max-width: 850px) {
@@ -376,6 +383,10 @@ a {
     justify-content: space-around;
     min-height: 80px;
     padding: 10px;
+  }
+
+  .nav--sticky ~ #about {
+    margin-top: 168px;
   }
 }
 
@@ -549,7 +560,6 @@ a {
 @media screen and (max-width: 782px) {
   #wpadminbar + header + main .nav__list {
     top: 130px;
-    /*height: calc(100vh - 130px);*/
   }
 
   .nav__list {
@@ -613,7 +623,6 @@ a {
 
 @media screen and (max-width: 850px) {
   .nav__list li {
-    /*flex-grow: 1;*/
     margin-left: 50px;
     padding: 10px 0 10px 0;
   }
@@ -1064,7 +1073,6 @@ a {
   height: 380px;
   position: relative;
   margin-bottom: 60px;
-  transition-duration: .2s;
 }
 
 @media screen and (max-width: 425px) {
@@ -1073,12 +1081,6 @@ a {
     height: 300px;
   }
 }
-
-/*.congratulations__link {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}*/
 
 .congratulations__frame {
   width: 380px;
@@ -1096,16 +1098,12 @@ a {
 
 .congratulations__item:hover .congratulations__photo,
 .congratulations__item:focus .congratulations__photo {
-  cursor: pointer;
-  opacity: 0;
-  z-index: -1;
-  transition-duration: .2s;
+  z-index: 0;
 }
 
 .congratulations__item:hover .congratulations__video,
 .congratulations__item:focus .congratulations__video {
-  z-index: 2;
-  transition-duration: .2s;
+  z-index: 1;
 }
 
 @media screen and (max-width: 425px) {
@@ -1115,39 +1113,28 @@ a {
   }
 }
 
+.congratulations__photo,
 .congratulations__video {
-  width: 356px;
-  height: 266px;
+  width: 358px;
+  height: 270px;
   display: block;
   position: absolute;
-  top: 40px;
-  left: 15px;
+  top: 38px;
+  left: 14px;
+  cursor: pointer;
+}
+
+.congratulations__photo--hidden {
+  visibility: hidden;
 }
 
 @media screen and (max-width: 425px) {
+  .congratulations__photo,
   .congratulations__video {
-    width: 280px;
-    height: 210px;
-    top: 26px;
-    left: 12px;
-  }
-}
-
-.congratulations__photo {
-  width: 356px;
-  height: 266px;
-  display: block;
-  position: absolute;
-  top: 40px;
-  left: 15px;
-}
-
-@media screen and (max-width: 425px) {
-  .congratulations__photo {
-    width: 280px;
-    height: 210px;
-    top: 26px;
-    left: 12px;
+    width: 282px;
+    height: 212px;
+    top: 25px;
+    left: 11px;
   }
 }
 

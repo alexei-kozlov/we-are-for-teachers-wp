@@ -1,24 +1,24 @@
 <footer class="footer">
   <div class="inner">
 
-		<?php the_custom_logo(); ?>
-		<?php /* <a href="#" class="footer__logo logo">
+	  <?php the_custom_logo(); ?>
+	  <?php /* <a href="#" class="footer__logo logo">
 			  <img src="<?php bloginfo('template_directory') ?>/img/footer-logo.svg" alt="Мы - учителям!" width="363" height="46">
 			  </a> */ ?>
 
-		<?php
-			$args = array(
-				'menu'            => "footer",
-				'menu_class'      => "footer__menu",
-				'container'       => "ul",
-				'container_class' => "footer__menu",
-				'fallback_cb'     => "wp_page_menu",
-				'echo'            => "true",
-				'depth'           => "0",
-				'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-			);
-			wp_nav_menu( $args );
-		?>
+	  <?php
+	  $args = array(
+		  'menu'            => 'footer',
+		  'menu_class'      => 'footer__menu',
+		  'container'       => 'ul',
+		  'container_class' => 'footer__menu',
+		  'fallback_cb'     => 'wp_page_menu',
+		  'echo'            => 'true',
+		  'depth'           => '0',
+		  'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+	  );
+	  wp_nav_menu( $args );
+	  ?>
     <div class="footer__right-col">
       <div class="footer__contacts">
         <a href="tel:+7(000)000-00-00" class="footer__tel"><?php the_field( 'phone-number', 42 ) ?></a>
