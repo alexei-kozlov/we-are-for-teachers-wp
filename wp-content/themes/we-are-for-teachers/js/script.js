@@ -2,8 +2,9 @@
 
   // Slider Congratulations
   $('.congratulations__slider').slick({
+    focusOnSelect: true,
     speed: 1500,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
     dots: true,
@@ -16,22 +17,9 @@
     pauseOnDotsHover: true,
     responsive: [
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
         breakpoint: 650,
         settings: {
           dots: false,
-          slidesToShow: 1
         }
       }
     ]
@@ -39,6 +27,7 @@
 
   // Slider Cards
   $('.cards__slider').slick({
+    focusOnSelect: true,
     centerMode: true,
     variableWidth: true,
     centerPadding: '38px',
@@ -48,7 +37,7 @@
     cssEase: 'ease-in-out',
     arrows: true,
     dots: true,
-    infinite: true,
+    // infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     pauseOnDotsHover: true,
@@ -64,7 +53,6 @@
         settings: {
           centerPadding: '60px',
           dots: false,
-          slidesToShow: 1
         }
       },
       {
@@ -98,14 +86,26 @@
     let promo = $('.promo').height();
     let navigation = 248;
     let wpadminbar = $('#wpadminbar').height();
-    if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
-      $('.nav').addClass('nav--sticky');
-      $('.nav .inner').addClass('inner--sticky');
-      $('.nav__camera-roll').addClass('nav__camera-roll--hidden');
+    if (wpadminbar) {
+      if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
+        $('.nav').addClass('nav--sticky');
+        $('.nav .inner').addClass('inner--sticky');
+        $('.nav__camera-roll').addClass('nav__camera-roll--hidden');
+      } else {
+        $('.nav').removeClass('nav--sticky');
+        $('.nav .inner').removeClass('inner--sticky');
+        $('.nav__camera-roll').removeClass('nav__camera-roll--hidden');
+      }
     } else {
-      $('.nav').removeClass('nav--sticky');
-      $('.nav .inner').removeClass('inner--sticky');
-      $('.nav__camera-roll').removeClass('nav__camera-roll--hidden');
+      if ($(this).scrollTop() > (header + promo + navigation)) {
+        $('.nav').addClass('nav--sticky');
+        $('.nav .inner').addClass('inner--sticky');
+        $('.nav__camera-roll').addClass('nav__camera-roll--hidden');
+      } else {
+        $('.nav').removeClass('nav--sticky');
+        $('.nav .inner').removeClass('inner--sticky');
+        $('.nav__camera-roll').removeClass('nav__camera-roll--hidden');
+      }
     }
 
     if ($(this).scrollTop() > 0) {
