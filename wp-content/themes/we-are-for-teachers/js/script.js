@@ -8,7 +8,6 @@
     autoplaySpeed: 3000,
     arrows: true,
     dots: true,
-    infinite: true,
     cssEase: 'ease-in-out',
     centerMode: true,
     variableWidth: true,
@@ -30,16 +29,14 @@
     focusOnSelect: true,
     centerMode: true,
     variableWidth: true,
-    centerPadding: '38px',
     speed: 1500,
     autoplay: true,
     autoplaySpeed: 3000,
-    cssEase: 'ease-in-out',
     arrows: true,
     dots: true,
-    // infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    swipeToSlide: true,
     pauseOnDotsHover: true,
     responsive: [
       {
@@ -64,6 +61,13 @@
         }
       }
     ]
+  }).on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+    if (currentSlide !== nextSlide) {
+      $('.slick-center + .slick-cloned').each(function () {
+        // Timeout required or Slick will overwrite the classes
+        setTimeout(() => this.classList.add('slick-current', 'slick-center'));
+      });
+    }
   });
 
   // Toggle mobile-menu

@@ -946,10 +946,6 @@ a {
   margin: 54px auto;
 }
 
-.congratulations__slider .slick-track {
-  transition: transform 1s;
-}
-
 .congratulations__slider .slick-slide {
   transition: width .5s;
 }
@@ -1248,22 +1244,35 @@ a {
   height: auto;
 }
 
+@media screen and (max-width: 850px) {
+  .cards__slider {
+    margin-bottom: 0;
+  }
+}
+
 .cards__slider .slick-track {
-  transition: transform 0.5s;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
+  height: 518px;
 }
 
-.cards__slider .slick-slide {
-  transition: width 0.5s;
-  cursor: pointer;
+@media screen and (max-width: 650px) {
+  .cards__slider .slick-track {
+    height: 464px;
+  }
 }
 
-@media screen and (max-width: 850px) {
-  .cards__slider {
-    margin-bottom: 0;
+@media screen and (max-width: 475px) {
+  .cards__slider .slick-track {
+    height: 356px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .cards__slider .slick-track {
+    height: 300px;
   }
 }
 
@@ -1273,13 +1282,15 @@ a {
   border: 10px solid #fff;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.1);
   position: relative;
-  margin: 38px;
+  margin: 38px 80px;
+  transition-duration: 1s;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 651px) {
-  .cards__slider .slick-current {
-    width: 396px;
-    max-width: none;
+  .cards__slider .slick-center {
+    transform: scale(1.5);
+    box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.1);
   }
 }
 
