@@ -87,6 +87,8 @@
   </div>
 </footer>
 
+<a href="#" class="up-button"></a>
+
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/jquery-3.5.1.js" defer></script>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/slick.min.js" defer></script>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/script.js" defer></script>

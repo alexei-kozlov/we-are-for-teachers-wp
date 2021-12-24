@@ -70,6 +70,40 @@
     }
   });
 
+  // Function - Add anchor links and scrolling on them
+  function anchorLink(link, id) {
+    $(link).on('click', function () {
+      let wpadminbar = $('#wpadminbar').height();
+      if (window.matchMedia('(max-width: 600px)').matches)
+        $('html, body').animate({
+          scrollTop: $(id).offset().top - $('header').height()
+        }, 10);
+      else if (window.matchMedia('(min-width: 601px) and (max-width: 850px)').matches) {
+        if (wpadminbar)
+          $('html, body').animate({
+            scrollTop: $(id).offset().top - $('header').height() - wpadminbar
+          }, 10);
+        else $('html, body').animate({
+          scrollTop: $(id).offset().top - $('header').height()
+        }, 10);
+      } else if (window.matchMedia('(min-width: 851px)').matches) {
+        if (wpadminbar)
+          $('html, body').animate({
+            scrollTop: $(id).offset().top
+          }, 10);
+        else $('html, body').animate({
+          scrollTop: $(id).offset().top + 32
+        }, 10);
+      }
+    });
+  }
+
+  // Call Functions anchorLink
+  anchorLink('a[href="#promo"]', '#promo');
+  anchorLink('a[href="#about"]', '#about');
+  anchorLink('a[href="#congratulations"]', '#congratulations');
+  anchorLink('a[href="#cards"]', '#cards');
+
   // Toggle mobile-menu
   $('.nav__menu-field').on('click', function () {
     $('.nav .inner').toggleClass('inner--menu-wrapper');
@@ -84,8 +118,9 @@
     $('.nav__menu-field').toggleClass('nav__menu-field--active');
   });
 
-  // Navigation work as sticky-fixed after scroll
   $(window).on('scroll', function () {
+
+    // Navigation work as sticky-fixed after scroll
     let header = $('.header').height();
     let promo = $('.promo').height();
     let navigation = 248;
@@ -112,11 +147,17 @@
       }
     }
 
+    // Correction navigation list after scrolling
     if ($(this).scrollTop() > 0) {
       $('.nav__list').addClass('nav__list--higher');
     } else {
       $('.nav__list').removeClass('nav__list--higher');
     }
+
+    // To up window button
+    if ($(this).scrollTop() > 500)
+      $('.up-button').fadeIn();
+    else $('.up-button').fadeOut();
   });
 
   // Check social item's attribute value (href)
@@ -139,7 +180,10 @@
         "func": "playVideo",
         "args": ""
       }), "*");
-      $(this).closest('.congratulations__item').find('.congratulations__photo').toggleClass('congratulations__photo--hidden');
+      $(this)
+          .closest('.congratulations__item')
+          .find('.congratulations__photo')
+          .toggleClass('congratulations__photo--hidden');
     });
 
     $(this).on('mouseout', function () {
@@ -148,7 +192,10 @@
         "func": "pauseVideo",
         "args": ""
       }), "*");
-      $(this).closest('.congratulations__item').find('.congratulations__photo').toggleClass('congratulations__photo--hidden');
+      $(this)
+          .closest('.congratulations__item')
+          .find('.congratulations__photo')
+          .toggleClass('congratulations__photo--hidden');
     });
   });
 

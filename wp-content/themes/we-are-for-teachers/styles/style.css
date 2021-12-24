@@ -718,13 +718,18 @@ a {
 
 @media screen and (max-width: 1100px) {
   .about .inner {
-    padding: 15px 25px;
+    padding: 112px 25px 0;
+  }
+}
+@media screen and (max-width: 850px) {
+  .about .inner {
+    padding: 25px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .about .inner {
-    padding: 10px;
+    padding: 25px 10px 10px;
   }
 }
 
@@ -744,6 +749,12 @@ a {
 .about__item {
   width: 30%;
   margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1100px) {
+  .about__item {
+    margin-bottom: 15px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -843,32 +854,37 @@ a {
 }
 
 @media screen and (max-width: 550px) {
-  .about__avatar-frame, .about__avatar {
+  .about__avatar-frame,
+  .about__avatar {
     transform: translateY(-30px) scale(0.7);
   }
 }
 
-.about__author, .about__author-pos {
+.about__author,
+.about__author-pos {
   width: 60%;
   padding-left: 8px;
   margin-bottom: 12px;
 }
 
 @media screen and (max-width: 1250px) {
-  .about__author, .about__author-pos {
+  .about__author,
+  .about__author-pos {
     width: 80%;
     padding-left: 24px;
   }
 }
 
 @media screen and (max-width: 1100px) {
-  .about__author, .about__author-pos {
+  .about__author,
+  .about__author-pos {
     padding-left: 0;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .about__author, .about__author-pos {
+  .about__author,
+  .about__author-pos {
     justify-content: center;
     width: 60%;
   }
@@ -931,7 +947,13 @@ a {
 
 .congratulations .inner {
   max-width: 1920px;
-  padding: 110px 0 50px;
+  padding: 110px 0 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .congratulations .inner {
+    padding: 112px 0 0;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -952,7 +974,7 @@ a {
 
 @media screen and (max-width: 850px) {
   .congratulations__slider {
-    margin: 0 auto;
+    margin: 10px auto 0;
   }
 }
 
@@ -1218,7 +1240,13 @@ a {
 
 /*------------------Cards-------------------*/
 .cards .inner {
-  padding: 36px 0 110px;
+  padding: 112px 0 110px;
+}
+
+@media screen and (max-width: 1100px) {
+  .cards .inner {
+    padding: 112px 0 30px;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -1230,6 +1258,12 @@ a {
 .cards__subtitle {
   margin: 16px auto 48px;
   text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .cards__subtitle {
+    margin-bottom: 0;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -1627,4 +1661,52 @@ a {
   .footer__social-list {
     display: none;
   }
+}
+
+/*------------------Up-Button----------------*/
+.up-button {
+  display: block;
+  text-decoration: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #fff06a;
+  border-radius: 50%;
+  padding: 0;
+  z-index: 2;
+  background-color: #612b1c;
+  margin: 0;
+  position: fixed;
+  cursor: pointer;
+  right: 50px;
+  bottom: 50px;
+  opacity: 0.6;
+  transition-duration: 0.3s;
+}
+@media screen and (max-width: 620px) {
+  .up-button {
+    right: 10px;
+    bottom: 10px;
+  }
+}
+.up-button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border: solid;
+  border-color: #fff06a;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-135deg) translate(40%, -15%);
+}
+.up-button:hover,
+.up-button:focus {
+  opacity: 1;
+  border: none;
+  box-shadow: 0 0 10px -1px #333;
+}
+.up-button:active {
+  box-shadow: inset 0 0 10px -1px #333;
 }
