@@ -721,6 +721,7 @@ a {
     padding: 112px 25px 0;
   }
 }
+
 @media screen and (max-width: 850px) {
   .about .inner {
     padding: 25px;
@@ -1095,6 +1096,7 @@ a {
     transform: translate(-180px, -50%);
   }
 }
+
 @media screen and (max-width: 400px) {
   .congratulations__slider .slick-next {
     transform: translate(150px, -50%);
@@ -1124,18 +1126,28 @@ a {
 }
 
 @media screen and (max-width: 650px) {
-  .congratulations__slider .slick-prev::before {
-    content: "\2B9C";
-  }
-
-  .congratulations__slider .slick-next::before {
-    content: "\2B9E";
-  }
-
   .congratulations__slider .slick-prev::before,
   .congratulations__slider .slick-next::before {
+    content: "";
+    display: block;
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border: solid;
+    border-color: #612b1c;
+    border-width: 0 2px 2px 0;
+  }
+
+  .congratulations__slider .slick-prev::before {
+    transform: rotate(135deg) translate(-30%, 50%);
+    /*content: "\2B9C";*/
+  }
+
+  .congratulations__slider .slick-next::before {
+    transform: rotate(-45deg) translate(-10%, -80%);
+    /*content: "\2B9E";*/
   }
 }
 
@@ -1158,6 +1170,7 @@ a {
     height: 300px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .congratulations__item {
     width: 240px;
@@ -1180,6 +1193,7 @@ a {
     height: 300px;
   }
 }
+
 @media screen and (max-width: 400px) {
   .congratulations__frame {
     width: 240px;
@@ -1471,18 +1485,28 @@ a {
 }
 
 @media screen and (max-width: 650px) {
-  .cards__slider .slick-prev::before {
-    content: "\2B9C";
-  }
-
-  .cards__slider .slick-next::before {
-    content: "\2B9E";
-  }
-
   .cards__slider .slick-prev::before,
   .cards__slider .slick-next::before {
+    content: "";
+    display: block;
+    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border: solid;
+    border-color: #612b1c;
+    border-width: 0 2px 2px 0;
+  }
+
+  .cards__slider .slick-prev::before {
+    transform: rotate(135deg) translate(-30%, 50%);
+    /*content: "\2B9C";*/
+  }
+
+  .cards__slider .slick-next::before {
+    transform: rotate(-45deg) translate(-10%, -80%);
+    /*content: "\2B9E";*/
   }
 }
 
@@ -1666,47 +1690,53 @@ a {
 /*------------------Up-Button----------------*/
 .up-button {
   display: block;
-  text-decoration: none;
-  width: 38px;
-  height: 38px;
-  border: 1px solid #fff06a;
-  border-radius: 50%;
-  padding: 0;
-  z-index: 2;
-  background-color: #612b1c;
-  margin: 0;
   position: fixed;
-  cursor: pointer;
   right: 50px;
   bottom: 50px;
-  opacity: 0.6;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+
+  width: 38px;
+  height: 38px;
+  text-decoration: none;
+  background-color: #612b1c;
+  border: 2px solid #fff06a;
+  border-radius: 50%;
+
+  cursor: pointer;
+  opacity: 0.7;
   transition-duration: 0.3s;
 }
+
 @media screen and (max-width: 620px) {
   .up-button {
     right: 10px;
     bottom: 10px;
   }
 }
+
 .up-button::after {
   content: "";
   display: block;
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border: solid;
   border-color: #fff06a;
   border-width: 0 2px 2px 0;
-  transform: rotate(-135deg) translate(40%, -15%);
+  transform: rotate(-135deg) translate(50%, -16%);
 }
+
 .up-button:hover,
 .up-button:focus {
   opacity: 1;
   border: none;
   box-shadow: 0 0 10px -1px #333;
 }
+
 .up-button:active {
   box-shadow: inset 0 0 10px -1px #333;
 }

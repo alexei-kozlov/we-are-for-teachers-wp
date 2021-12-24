@@ -155,7 +155,7 @@
     }
 
     // To up window button
-    if ($(this).scrollTop() > 500)
+    if ($(this).scrollTop() > 100)
       $('.up-button').fadeIn();
     else $('.up-button').fadeOut();
   });
