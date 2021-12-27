@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab:wght@400;700&display=swap");
-/*@import url("snowfall.css");*/
+@import url("snowfall.css");
 
 * {
   margin: 0;
@@ -18,8 +18,45 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.15;
-  color: #612b1c;
-  background-color: #fff;
+  --text-color: #612b1c;
+  --back-color: #fffbd8;
+
+  &.theme-dark {
+    background: var(--dark-back-color);
+    color: var(--dark-text-color);
+  }
+
+  &.theme-snow {
+    background: var(--snow-bg-section);
+    color: var(--dark-text-color);
+  }
+
+  &.theme-auto {
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-back-color);
+      color: var(--dark-text-color);
+    }
+  }
+}
+
+:root {
+  --dark-nav-color: #111;
+  --dark-back-color: #27292d;
+  --dark-item-color: #434343;
+  --dark-text-color: #939496;
+  --dark-title-color: #e9eaea;
+  --light-elem-color: #f3f3f3;
+  --snow-bg-section: transparent;
+  --snow-bg-item: rgba(67, 67, 67, .5);
+  --snow-bg-header: linear-gradient(#123, #111);
+  --snow-bg-footer: linear-gradient(#111, #123);
+}
+
+.theme-snow,
+.theme-light,
+.theme-dark,
+.theme-auto {
+  transition: all .2s ease;
 }
 
 .inner {
@@ -47,13 +84,23 @@ body {
   color: #612b1c;
   margin: 0;
 
+  body.theme-snow &,
+  body.theme-dark & {
+    color: var(--dark-title-color);
+  }
+
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      color: var(--dark-title-color);
+    }
+  }
+
   @media screen and (max-width: 650px) {
     font-size: 26px;
     padding: 5px;
     margin: 5px;
   }
 }
-
 
 ul, li {
   list-style: none;
@@ -95,6 +142,35 @@ a {
   &:active {
     opacity: 0.9;
   }
+
+  body.theme-snow &,
+  body.theme-dark & {
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 10px 1px #ccc;
+      transition-duration: .3s;
+    }
+
+    &:active {
+      box-shadow: none;
+      transition-duration: .3s;
+    }
+  }
+
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 10px 1px #ccc;
+        transition-duration: .3s;
+      }
+
+      &:active {
+        box-shadow: none;
+        transition-duration: .3s;
+      }
+    }
+  }
 }
 
 .social {
@@ -103,7 +179,6 @@ a {
   align-items: center;
   width: 244px;
   margin-right: 26px;
-
 
   &__item {
     list-style: none;
@@ -116,9 +191,42 @@ a {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: #612b1c;
+    background: #612b1c;
     position: relative;
     transition-duration: .3s;
+
+    body.theme-snow &,
+    body.theme-dark & {
+      background: transparent;
+
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 20px 2px #ccc;
+        transition-duration: .3s;
+      }
+
+      &:active {
+        box-shadow: none;
+        transition-duration: .3s;
+      }
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: transparent;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 20px 2px #ccc;
+          transition-duration: .3s;
+        }
+
+        &:active {
+          box-shadow: none;
+          transition-duration: .3s;
+        }
+      }
+    }
 
     &:hover,
     &:focus {
@@ -138,6 +246,17 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    body.theme-snow &,
+    body.theme-dark & {
+      fill: var(--dark-title-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        fill: var(--dark-title-color);
+      }
+    }
   }
 }
 
@@ -167,6 +286,17 @@ a {
       border-radius: 50%;
       background: linear-gradient(180deg, #FFC500 0%, #FF9346 100%);
       opacity: 1;
+
+      body.theme-snow &,
+      body.theme-dark & {
+        background: linear-gradient(180deg, #FFC500 0%, #b00000 100%);
+      }
+
+      body.theme-auto & {
+        @media (prefers-color-scheme: dark) {
+          background: linear-gradient(180deg, #FFC500 0%, #b00000 100%);
+        }
+      }
     }
 
     & li button:hover::before {
@@ -175,6 +305,17 @@ a {
 
     & li.slick-active button::before {
       background: #612b1c;
+
+      body.theme-snow &,
+      body.theme-dark & {
+        background: var(--light-elem-color);
+      }
+
+      body.theme-auto & {
+        @media (prefers-color-scheme: dark) {
+          background: var(--light-elem-color);
+        }
+      }
     }
   }
 
@@ -193,6 +334,16 @@ a {
       border-color: #612b1c;
       width: 38px;
       height: 38px;
+
+      body.theme-snow &,
+      body.theme-dark & {
+        border-color: var(--light-elem-color);
+      }
+      body.theme-auto & {
+        @media (prefers-color-scheme: dark) {
+          border-color: var(--light-elem-color);
+        }
+      }
     }
     @media screen and (max-width: 600px) {
       top: 50%;
@@ -236,6 +387,17 @@ a {
     font-size: 26px;
     line-height: 0;
 
+    body.theme-snow &,
+    body.theme-dark & {
+      color: var(--light-elem-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        color: var(--light-elem-color);
+      }
+    }
+
     &:hover,
     &:focus {
       opacity: .7;
@@ -252,6 +414,16 @@ a {
       border: solid;
       border-color: #612b1c;
       border-width: 0 2px 2px 0;
+
+      body.theme-snow &,
+      body.theme-dark & {
+        border-color: var(--light-elem-color);
+      }
+      body.theme-auto & {
+        @media (prefers-color-scheme: dark) {
+          border-color: var(--light-elem-color);
+        }
+      }
     }
   }
 }
@@ -259,8 +431,24 @@ a {
 /*-----------------Header-----------------*/
 .header {
   padding: 9px 0;
-  background-color: #fff06a;
+  background: #fff06a;
   box-sizing: border-box;
+
+  body.theme-snow & {
+    background: var(--snow-bg-section);
+    color: var(--dark-text-color);
+  }
+
+  body.theme-dark & {
+    background: var(--dark-back-color);
+    color: var(--dark-text-color);
+  }
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-back-color);
+      color: var(--dark-text-color);
+    }
+  }
 
   @media screen and (max-width: 850px) {
     position: sticky;
@@ -268,6 +456,20 @@ a {
     right: 0;
     box-shadow: 0 2px 10px 3px #612b1c;
     z-index: 4;
+
+    body.theme-snow & {
+      background: var(--snow-bg-header);
+    }
+
+    body.theme-snow &,
+    body.theme-dark & {
+      box-shadow: 0 0 5px 1px var(--light-elem-color);
+    }
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        box-shadow: 0 0 5px 1px var(--light-elem-color);
+      }
+    }
   }
 
   #wpadminbar + & {
@@ -328,7 +530,23 @@ a {
 
 /*-----------------Promo------------------*/
 .promo {
-  background-color: #fff06a;
+  background: #fff06a;
+
+  body.theme-snow & {
+    background: var(--snow-bg-section);
+    color: var(--dark-text-color);
+  }
+
+  body.theme-dark & {
+    background: var(--dark-back-color);
+    color: var(--dark-text-color);
+  }
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-back-color);
+      color: var(--dark-text-color);
+    }
+  }
 
   .inner {
     padding: 48px 27px 64px 480px;
@@ -376,10 +594,26 @@ a {
     letter-spacing: 0;
     line-height: 1.33;
     text-align: left;
-    color: #612b1c;
     margin-left: 10px;
+    padding: 0 20px;
     display: inline-block;
     vertical-align: top;
+
+    body.theme-snow & {
+      background: var(--snow-bg-item);
+      border-radius: 10px;
+    }
+
+    body.theme-dark & {
+      background: var(--dark-item-color);
+      border-radius: 10px;
+    }
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--dark-item-color);
+        border-radius: 10px;
+      }
+    }
 
     @media screen and (max-width: 650px) {
       width: 70%;
@@ -401,6 +635,16 @@ a {
     margin-left: 20px;
     background: #f82e2c;
 
+    body.theme-snow &,
+    body.theme-dark & {
+      background: #8f0000;
+    }
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: #8f0000;
+      }
+    }
+
     @media screen and (max-width: 850px) {
       margin: 0 auto;
     }
@@ -419,8 +663,7 @@ a {
 /*---------------Navigation---------------*/
 .nav {
   z-index: 3;
-  background-color: #612b1c;
-
+  background: #612b1c;
   top: -80px;
   transition-duration: .5s;
 
@@ -478,7 +721,7 @@ a {
     &--menu-wrapper {
       @media screen and (max-width: 850px) {
         width: 100vw;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, .8);
         overflow: hidden;
         transition-duration: .5s;
         right: 0;
@@ -511,12 +754,25 @@ a {
     width: 54px;
     height: 54px;
     margin-left: 30px;
-    background-color: #612b1c;
+    background: #612b1c;
     cursor: pointer;
 
     @media screen and (max-width: 850px) {
       display: flex;
       margin: 6px;
+    }
+
+    body.theme-snow &,
+    body.theme-dark & {
+      background: var(--dark-title-color);
+      border-radius: 10px;
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--dark-title-color);
+        border-radius: 10px;
+      }
     }
   }
 
@@ -525,9 +781,20 @@ a {
     margin: auto;
     width: 22px;
     height: 2px;
-    background-color: #fff;
+    background: #fff;
     position: relative;
     transition-duration: .7s;
+
+    body.theme-snow &,
+    body.theme-dark & {
+      background: var(--dark-nav-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--dark-nav-color);
+      }
+    }
 
     &::before,
     &::after {
@@ -535,9 +802,20 @@ a {
       width: 100%;
       height: 2px;
       display: block;
-      background-color: #fff;
+      background: #fff;
       position: absolute;
       transition-duration: .7s;
+
+      body.theme-snow &,
+      body.theme-dark & {
+        background: var(--dark-nav-color);
+      }
+
+      body.theme-auto & {
+        @media (prefers-color-scheme: dark) {
+          background: var(--dark-nav-color);
+        }
+      }
     }
 
     &::before {
@@ -550,9 +828,20 @@ a {
   }
 
   &__menu-field--active &__menu-btn {
-    background-color: transparent;
+    background: transparent;
     transform: rotate(180deg);
     transition-duration: .7s;
+
+    body.theme-snow &,
+    body.theme-dark & {
+      background: transparent;
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: transparent;
+      }
+    }
 
     &::before,
     &::after {
@@ -580,7 +869,6 @@ a {
     }
   }
 
-
   @media screen and (max-width: 850px) {
     &__menu &__list {
       position: absolute;
@@ -605,8 +893,20 @@ a {
       margin: 0 auto;
     }
     @media screen and (max-width: 1000px) {
-      background-color: #612b1c;
+      background: #612b1c;
       z-index: 4;
+
+      body.theme-snow & {
+        background: linear-gradient(#060a21 0%, #0a1638 80%, #181f59 100%);
+      }
+      body.theme-dark & {
+        background: var(--dark-nav-color);
+      }
+      body.theme-auto & {
+        @media (prefers-color-scheme: dark) {
+          background: var(--dark-nav-color);
+        }
+      }
     }
     @media screen and (max-width: 850px) {
       position: fixed;
@@ -618,7 +918,6 @@ a {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      background-color: #612b1c;
       overflow: auto;
       flex-wrap: nowrap;
     }
@@ -748,7 +1047,6 @@ a {
 
 /*-----------------About------------------*/
 .about {
-  background-color: #fffbd8;
 
   .inner {
     padding: 135px 0 90px;
@@ -767,7 +1065,6 @@ a {
   &__list {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     flex-wrap: wrap;
 
     @media screen and (max-width: 475px) {
@@ -776,8 +1073,29 @@ a {
   }
 
   &__item {
-    width: 30%;
-    margin-bottom: 50px;
+    flex-basis: 30%;
+    margin: 5px 5px 50px;
+    flex-grow: 1;
+
+    body.theme-snow & {
+      background: var(--snow-bg-item);
+      border-radius: 10px;
+      padding: 0 10px;
+    }
+
+    body.theme-dark & {
+      background: var(--dark-item-color);
+      border-radius: 10px;
+      padding: 0 10px;
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--dark-item-color);
+        border-radius: 10px;
+        padding: 0 10px;
+      }
+    }
 
     @media screen and (max-width: 1100px) {
       margin-bottom: 15px;
@@ -861,8 +1179,9 @@ a {
     font-weight: 400;
     line-height: 1.31;
     text-align: left;
-    color: #612b1c;
     height: auto;
+    margin: 0;
+    padding: 0;
   }
 
   &__author-pos {
@@ -1011,7 +1330,6 @@ a {
     }
   }
 
-
   &__frame {
     width: 380px;
     height: 380px;
@@ -1053,7 +1371,6 @@ a {
       left: 9px;
     }
   }
-
 
   &__item:hover &__photo,
   &__item:focus &__photo {
@@ -1172,6 +1489,17 @@ a {
     transition-duration: 1s;
     cursor: pointer;
 
+    body.theme-snow &,
+    body.theme-dark & {
+      background: var(--light-elem-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--light-elem-color);
+      }
+    }
+
     @media screen and (max-width: 650px) {
       max-width: none;
       width: 362px;
@@ -1179,7 +1507,7 @@ a {
     }
     @media screen and (max-width: 475px) {
       width: 264px;
-      height: 296px;
+      height: 293px;
     }
     @media screen and (max-width: 375px) {
       width: 216px;
@@ -1207,6 +1535,17 @@ a {
     display: inline-block;
     width: 100%;
     background: #612b1c;
+
+    body.theme-snow &,
+    body.theme-dark & {
+      background: var(--dark-nav-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--dark-nav-color);
+      }
+    }
   }
 
   &__btn-icon {
@@ -1227,7 +1566,21 @@ a {
 
 /*----------------Footer------------------*/
 .footer {
-  background-color: #fff06a;
+  background: #fff06a;
+
+  body.theme-snow & {
+    background: var(--snow-bg-footer);
+  }
+
+  body.theme-dark & {
+    background: var(--dark-nav-color);
+  }
+
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-nav-color);
+    }
+  }
 
   .inner {
     min-height: 206px;
@@ -1291,6 +1644,17 @@ a {
   &__menu li a {
     color: #612b1c;
 
+    body.theme-snow &,
+    body.theme-dark & {
+      color: var(--dark-title-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        color: var(--dark-title-color);
+      }
+    }
+
     &:hover,
     &:focus {
       opacity: .7;
@@ -1314,6 +1678,17 @@ a {
   &__tel,
   &__email {
     color: #612b1c;
+
+    body.theme-snow &,
+    body.theme-dark & {
+      color: var(--dark-title-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        color: var(--dark-title-color);
+      }
+    }
 
     @media screen and (max-width: 850px) {
       font-weight: bold;
@@ -1344,7 +1719,7 @@ a {
 
 /*---------------Up-Button----------------*/
 .up-button {
-  display: block;
+  display: none;
   position: fixed;
   right: 50px;
   bottom: 50px;
@@ -1355,13 +1730,24 @@ a {
   width: 38px;
   height: 38px;
   text-decoration: none;
-  background-color: #612b1c;
+  background: #612b1c;
   border: 2px solid #fff06a;
   border-radius: 50%;
 
   cursor: pointer;
   opacity: 0.7;
   transition-duration: 0.3s;
+
+  body.theme-snow &,
+  body.theme-dark & {
+    background: var(--dark-nav-color);
+  }
+
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-nav-color);
+    }
+  }
 
   @media screen and (max-width: 620px) {
     right: 10px;
@@ -1391,5 +1777,23 @@ a {
 
   &:active {
     box-shadow: inset 0 0 10px -1px #333;
+  }
+}
+
+/*---------------Theme-Toggle----------------*/
+#theme {
+  width: 26px;
+  height: 26px;
+  margin: 0 auto;
+  background-color: #612b1c;
+  border-radius: 50%;
+  appearance: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #fff06a;
+
+  & option {
+    background: transparent;
   }
 }

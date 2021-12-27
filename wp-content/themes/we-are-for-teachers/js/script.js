@@ -61,7 +61,8 @@
         }
       }
     ]
-  }).on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+  })
+      .on('beforeChange', (event, slick, currentSlide, nextSlide) => {
     if (currentSlide !== nextSlide) {
       $('.slick-center + .slick-cloned').each(function () {
         // Timeout required or Slick will overwrite the classes
@@ -176,7 +177,7 @@
   $('.congratulations__video').each(function () {
     let href = $(this).attr('data-href'),
         videoID = href.substring(href.indexOf('v=') + 2, href.indexOf('v=') + 13);
-    $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
+    // $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
 
     // Autoplay/stop YouTube video if mouse focus on/off
     $(this).on('mouseover', function () {
@@ -218,4 +219,22 @@
     }
   });
 
+  // Change site's themes
+  function applyTheme(theme) {
+    $('body').removeClass('theme-auto theme-light theme-dark theme-snow').addClass(`theme-${theme}`);
+  }
+  $(document).ready(function () {
+    const savedTheme = localStorage.getItem('theme') || 'auto';
+
+    applyTheme(savedTheme);
+
+    for (const optionElement of $('#theme option')) {
+      optionElement.selected = savedTheme === optionElement.value;
+    }
+
+    $('#theme').on('change', function () {
+      localStorage.setItem('theme', this.value);
+      applyTheme(this.value);
+    });
+  });
 })(jQuery);

@@ -88,7 +88,7 @@
 					<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'about__avatar' ) ); ?>
                   <img src="<?php bloginfo( 'template_directory' ) ?>/img/avatar-frame.svg" alt="Рамка"
                        class="about__avatar-frame" width="205" height="205">
-                  <h3 class="about__author"><?php the_title(); ?></h3>
+                  <h3 class="about__author title"><?php the_title(); ?></h3>
                   <p class="about__author-pos"><?php the_field( 'person-position' ); ?></p>
                 </div>
                 <div class="about__text"><?php the_excerpt(); ?></div>
