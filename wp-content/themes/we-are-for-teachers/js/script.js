@@ -154,10 +154,15 @@
       $('.nav__list').removeClass('nav__list--higher');
     }
 
-    // To up window button
+    // To top window button fade In/Out
     if ($(this).scrollTop() > 100)
       $('.up-button').fadeIn();
     else $('.up-button').fadeOut();
+  });
+
+  // To top button on-click
+  $('.up-button').click(function () {
+    $('html, body').animate({scrollTop: 0}, 10);
   });
 
   // Check social item's attribute value (href)
@@ -206,6 +211,11 @@
       $('.nav__menu').toggleClass('nav__menu--center-mode');
     }
     $(window).trigger('scroll');
+
+    // Add snowflakes
+    for (let i = 1; i <= 50; i++) {
+      $('.snowfall').append($('<div/>', {class: 'snowflake'}))
+    }
   });
 
 })(jQuery);

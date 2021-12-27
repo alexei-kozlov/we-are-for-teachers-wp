@@ -8,7 +8,7 @@
 	<?php wp_head(); ?>
   <link rel="icon" href="<?php bloginfo( 'template_directory' ) ?>/img/favicon.ico"/>
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/slick.css">
-  <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/style.css">
+  <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/main.css">
   <title><?php bloginfo( 'name' ); ?> | <?php bloginfo( 'description' ); ?></title>
 </head>
 
