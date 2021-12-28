@@ -7,6 +7,7 @@
   <meta name="description" content="С нашей помощью вы сможете сделать поздравительную открытку для своего учителя">
 	<?php wp_head(); ?>
   <link rel="icon" href="<?php bloginfo( 'template_directory' ) ?>/img/favicon.ico"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/slick.css">
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/main.css">
   <title><?php bloginfo( 'name' ); ?> | <?php bloginfo( 'description' ); ?></title>
@@ -57,13 +58,27 @@
         <img src="<?php bloginfo('template_directory') ?>/img/footer-logo.svg" alt="Мы - учителям!" width="316" height="40">
         </a> */ ?>
 
-    <label for="theme"></label>
+    <!--<label for="theme"></label>
     <select id="theme">
-      <option value="auto" selected>Auto</option>
+      <option value="auto">Auto</option>
       <option value="light">Light</option>
       <option value="dark">Dark</option>
       <option value="snow">Snow</option>
-    </select>
+    </select>-->
+
+    <div class="theme" data-state="" data-theme="">
+      <p class="theme__title"></p>
+      <div class="theme__list">
+        <input id="theme-1" class="theme__input" type="radio" name="singleSelect" value="auto">
+        <label for="theme-1" class="theme__label" data-value="auto"></label>
+        <input id="theme-2" class="theme__input" type="radio" name="singleSelect" value="light">
+        <label for="theme-2" class="theme__label" data-value="light"></label>
+        <input id="theme-3" class="theme__input" type="radio" name="singleSelect" value="dark">
+        <label for="theme-3" class="theme__label" data-value="dark"></label>
+        <input id="theme-4" class="theme__input" type="radio" name="singleSelect" value="snow">
+        <label for="theme-4" class="theme__label" data-value="snow"></label>
+      </div>
+    </div>
 
     <ul class="header__social-list social">
       <li class="social__item">

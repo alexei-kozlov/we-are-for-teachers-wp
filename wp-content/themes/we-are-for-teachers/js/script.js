@@ -63,13 +63,13 @@
     ]
   })
       .on('beforeChange', (event, slick, currentSlide, nextSlide) => {
-    if (currentSlide !== nextSlide) {
-      $('.slick-center + .slick-cloned').each(function () {
-        // Timeout required or Slick will overwrite the classes
-        setTimeout(() => this.classList.add('slick-current', 'slick-center'));
+        if (currentSlide !== nextSlide) {
+          $('.slick-center + .slick-cloned').each(function () {
+            // Timeout required or Slick will overwrite the classes
+            setTimeout(() => this.classList.add('slick-current', 'slick-center'));
+          });
+        }
       });
-    }
-  });
 
   // Function - Add anchor links and scrolling on them
   function anchorLink(link, id) {
@@ -214,7 +214,7 @@
     $(window).trigger('scroll');
 
     // Add snowflakes
-    for (let i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 100; i++) {
       $('.snowfall').append($('<div/>', {class: 'snowflake'}))
     }
   });
@@ -225,16 +225,28 @@
   }
   $(document).ready(function () {
     const savedTheme = localStorage.getItem('theme') || 'auto';
-
     applyTheme(savedTheme);
 
-    for (const optionElement of $('#theme option')) {
-      optionElement.selected = savedTheme === optionElement.value;
+    for (const themeElement of $('.theme .theme__input')) {
+      themeElement.checked = savedTheme === themeElement.value;
     }
+    // Toggle theme-menu
+    $('.theme__title').on('click', () => {
+      const theme = $('.theme');
+      if (theme.attr('data-state') === 'active') {
+        theme.attr('data-state', '');
+      } else {
+        theme.attr('data-state', 'active');
+      }
+    });
 
-    $('#theme').on('change', function () {
-      localStorage.setItem('theme', this.value);
-      applyTheme(this.value);
+    // Save data in local storage
+    $('.theme__input').each(function () {
+      $(this).on('click', () => {
+        $('.theme').attr('data-state', '').attr('data-theme', $(this).attr('value'));
+        localStorage.setItem('theme', $(this).attr('value'));
+        applyTheme($(this).attr('value'));
+      });
     });
   });
 })(jQuery);
