@@ -219,11 +219,41 @@
     }
   });
 
-  // Change site's themes
-  function applyTheme(theme) {
-    $('body').removeClass('theme-auto theme-light theme-dark theme-snow').addClass(`theme-${theme}`);
-  }
   $(document).ready(function () {
+    $('.dark-logo .custom-logo').each(function () {
+      $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
+    });
+    // Change site's themes
+    function applyTheme(theme) {
+      $('body').removeClass('theme-auto theme-light theme-dark theme-snow').addClass(`theme-${theme}`);
+      // -------------- START -----------------
+      /*let themeDark = ['dark', 'snow', 'auto'];
+      let themeAuto = ['auto'];
+      let themeLight = ['light'];
+      if (themeDark.indexOf(theme) >= 0) {
+        $('.custom-logo').each(function () {
+          $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
+        });
+      }
+      if (themeLight.indexOf(theme) >= 0) {
+        $('.custom-logo').each(function () {
+          $(this).attr('src', $(this).attr('src').replace('dark-', 'footer-'));
+        });
+      }
+      if (themeAuto.indexOf(theme) >= 0) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          $('.custom-logo').each(function () {
+            $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
+          });
+        } else {
+          $('.custom-logo').each(function () {
+            $(this).attr('src', $(this).attr('src').replace('dark-', 'footer-'));
+          });
+        }
+      }*/
+      // -------------- END -----------------
+    }
+
     const savedTheme = localStorage.getItem('theme') || 'auto';
     applyTheme(savedTheme);
 

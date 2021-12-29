@@ -1,10 +1,7 @@
 <footer class="footer">
   <div class="inner">
-
-	  <?php the_custom_logo(); ?>
-	  <?php /* <a href="#" class="footer__logo logo">
-			  <img src="<?php bloginfo('template_directory') ?>/img/footer-logo.svg" alt="Мы - учителям!" width="363" height="46">
-			  </a> */ ?>
+    <div class="light-logo"><?php the_custom_logo(); ?></div>
+    <div class="dark-logo"><?php the_custom_logo(); ?></div>
 
 	  <?php
 	  $args = array(
