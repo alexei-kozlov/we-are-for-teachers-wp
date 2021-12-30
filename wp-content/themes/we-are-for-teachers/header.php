@@ -55,28 +55,6 @@
     <div class="light-logo"><?php the_custom_logo(); ?></div>
     <div class="dark-logo"><?php the_custom_logo(); ?></div>
 
-    <div class="theme" data-state="" data-theme="">
-      <p class="theme__title"></p>
-      <div class="theme__list">
-        <input id="theme-1" class="theme__input" type="radio" name="singleSelect" value="auto">
-        <label for="theme-1" class="theme__label" data-value="auto">
-          <i class="fas fa-palette"></i>
-        </label>
-        <input id="theme-2" class="theme__input" type="radio" name="singleSelect" value="light">
-        <label for="theme-2" class="theme__label" data-value="light">
-          <i class="fas fa-sun"></i>
-        </label>
-        <input id="theme-3" class="theme__input" type="radio" name="singleSelect" value="dark">
-        <label for="theme-3" class="theme__label" data-value="dark">
-          <i class="fas fa-moon"></i>
-        </label>
-        <input id="theme-4" class="theme__input" type="radio" name="singleSelect" value="snow">
-        <label for="theme-4" class="theme__label" data-value="snow">
-          <i class="fas fa-snowflake"></i>
-        </label>
-      </div>
-    </div>
-
     <ul class="header__social-list social">
       <li class="social__item">
         <a href="<?php the_field( 'telegram', 42 ) ?>" class="social__link" target="_blank">
@@ -135,8 +113,32 @@
         </a>
       </li>
     </ul>
-    <div class="nav__menu-field">
-      <span class="nav__menu-btn"></span>
+
+    <div class="nav__control">
+      <div class="theme" data-state="" data-theme="">
+        <p class="theme__title"></p>
+        <div class="theme__list">
+          <input id="theme-1" class="theme__input" type="radio" name="singleSelect" value="auto">
+          <label for="theme-1" class="theme__label" data-value="auto">
+            <i class="fas fa-palette"></i>
+          </label>
+          <input id="theme-2" class="theme__input" type="radio" name="singleSelect" value="light">
+          <label for="theme-2" class="theme__label" data-value="light">
+            <i class="fas fa-sun"></i>
+          </label>
+          <input id="theme-3" class="theme__input" type="radio" name="singleSelect" value="dark">
+          <label for="theme-3" class="theme__label" data-value="dark">
+            <i class="fas fa-moon"></i>
+          </label>
+          <input id="theme-4" class="theme__input" type="radio" name="singleSelect" value="snow">
+          <label for="theme-4" class="theme__label" data-value="snow">
+            <i class="fas fa-snowflake"></i>
+          </label>
+        </div>
+      </div>
+      <div class="nav__menu-field">
+        <span class="nav__menu-btn"></span>
+      </div>
     </div>
   </div>
 </header>
