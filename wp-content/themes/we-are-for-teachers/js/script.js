@@ -1,4 +1,16 @@
 ;(function ($) {
+  // Slider Promo
+  $('.promo__slider').slick({
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+    dots: false,
+    cssEase: 'ease-in-out',
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    fade: true,
+  });
 
   // Slider Congratulations
   $('.congratulations__slider').slick({
@@ -177,7 +189,7 @@
   $('.congratulations__video').each(function () {
     let href = $(this).attr('data-href'),
         videoID = href.substring(href.indexOf('v=') + 2, href.indexOf('v=') + 13);
-    // $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
+    $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
 
     // Autoplay/stop YouTube video if mouse focus on/off
     $(this).on('mouseover', function () {
@@ -223,35 +235,10 @@
     $('.dark-logo .custom-logo').each(function () {
       $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
     });
+
     // Change site's themes
     function applyTheme(theme) {
       $('body').removeClass('theme-auto theme-light theme-dark theme-snow').addClass(`theme-${theme}`);
-      // -------------- START -----------------
-      /*let themeDark = ['dark', 'snow', 'auto'];
-      let themeAuto = ['auto'];
-      let themeLight = ['light'];
-      if (themeDark.indexOf(theme) >= 0) {
-        $('.custom-logo').each(function () {
-          $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
-        });
-      }
-      if (themeLight.indexOf(theme) >= 0) {
-        $('.custom-logo').each(function () {
-          $(this).attr('src', $(this).attr('src').replace('dark-', 'footer-'));
-        });
-      }
-      if (themeAuto.indexOf(theme) >= 0) {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          $('.custom-logo').each(function () {
-            $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
-          });
-        } else {
-          $('.custom-logo').each(function () {
-            $(this).attr('src', $(this).attr('src').replace('dark-', 'footer-'));
-          });
-        }
-      }*/
-      // -------------- END -----------------
     }
 
     const savedTheme = localStorage.getItem('theme') || 'auto';

@@ -106,7 +106,11 @@ body.theme-snow .light-logo, body.theme-dark .light-logo {
   color: #612b1c;
   margin: 0;
 }
-body.theme-snow .title, body.theme-dark .title {
+body.theme-snow .title {
+  color: var(--dark-title-color);
+  text-shadow: -2px -2px 4px var(--light-elem-color);
+}
+body.theme-dark .title {
   color: var(--dark-title-color);
 }
 @media (prefers-color-scheme: dark) {
@@ -163,11 +167,20 @@ a {
 .btn:active {
   opacity: 0.9;
 }
-body.theme-snow .btn:hover, body.theme-snow .btn:focus, body.theme-dark .btn:hover, body.theme-dark .btn:focus {
+body.theme-snow .btn {
+  border: none;
+  box-shadow: inset 0 6px 8px -2px var(--light-elem-color);
+  transition-duration: 0.3s;
+}
+body.theme-snow .btn:hover, body.theme-snow .btn:focus {
+  box-shadow: 0 0 10px 1px #ccc, inset 0 6px 8px -2px var(--light-elem-color);
+  transition-duration: 0.3s;
+}
+body.theme-dark .btn:hover, body.theme-dark .btn:focus {
   box-shadow: 0 0 10px 1px #ccc;
   transition-duration: 0.3s;
 }
-body.theme-snow .btn:active, body.theme-dark .btn:active {
+body.theme-dark .btn:active {
   box-shadow: none;
   transition-duration: 0.3s;
 }
@@ -639,7 +652,12 @@ body.theme-dark .promo {
   }
 }
 .promo__quote-block {
+  max-width: 515px;
+  width: 100%;
   margin: 30px 0 70px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 @media screen and (max-width: 600px) {
   .promo__quote-block {
@@ -651,6 +669,8 @@ body.theme-dark .promo {
   margin: 8px 4px 0 0;
 }
 .promo__blockquote {
+  max-width: 450px;
+  width: 100%;
   font-family: "Roboto Slab", "Times New Roman", serif;
   font-style: normal;
   font-weight: 400;
@@ -659,8 +679,6 @@ body.theme-dark .promo {
   text-align: left;
   margin-left: 10px;
   padding: 0 20px;
-  display: inline-block;
-  vertical-align: top;
 }
 body.theme-snow .promo__blockquote {
   background: var(--snow-bg-item);
@@ -680,6 +698,15 @@ body.theme-dark .promo__blockquote {
   .promo__blockquote {
     width: 70%;
   }
+}
+.promo__slider {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+.promo__item {
+  width: 100%;
 }
 .promo__text {
   font-size: 12px;

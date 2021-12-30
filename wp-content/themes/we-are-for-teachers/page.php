@@ -13,30 +13,41 @@
         <h1 class="promo__title title"><?php echo get_the_title(); ?></h1>
 		  <?php
 		  $args  = array(
-			  'numberposts'      => 1,
+			  'numberposts'      => 0,
 			  'category_name'    => 'promo',
+			  'orderby'          => 'date',
+			  'order'            => 'ASC',
+			  'include'          => array(),
+			  'exclude'          => array(),
+			  'meta_key'         => '',
+			  'meta_value'       => '',
 			  'post_type'        => 'post',
 			  'suppress_filters' => true,
 		  );
-		  $posts = get_posts( $args );
+		  $posts = get_posts( $args ); ?>
 
-		  foreach ( $posts as $post ) : setup_postdata( $post ); ?>
-            <div class="promo__quote-block">
-              <img src="<?php bloginfo( 'template_directory' ) ?>/img/icons/back-quotes-icon.svg" alt="Кавычки"
-                   class="promo__quote-icon" width="25" height="28">
-              <blockquote class="promo__blockquote">
-                <p class="promo__text"><?php the_title(); ?></p>
-                <p class="promo__author"><?php the_field( 'quote-author' ) ?></p>
-              </blockquote>
-            </div>
-            <a href="<?php the_field( 'url-youtube' ) ?>" class="promo__btn btn" target="_blank">
-              <svg class="promo__btn-icon" width="41" height="28" viewBox="0 0 41 28" fill="#fff">
-                <use xlink:href="#youtube-icon"/>
-              </svg>
-              <span class="promo__btn-name"><?php the_field( 'youtube-button-text' ) ?></span>
-            </a>
-		  <?php endforeach; ?>
+        <div class="promo__quote-block">
+          <img src="<?php bloginfo( 'template_directory' ) ?>/img/icons/back-quotes-icon.svg" alt="Кавычки"
+               class="promo__quote-icon" width="25" height="28">
+          <blockquote class="promo__blockquote">
+            <ul class="promo__slider">
 
+				<?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
+                  <li class="promo__item">
+                    <p class="promo__text"><?php the_title(); ?></p>
+                    <p class="promo__author"><?php the_field( 'quote-author' ) ?></p>
+                  </li>
+				<?php endforeach; ?>
+
+            </ul>
+          </blockquote>
+        </div>
+        <a href="<?php the_field( 'url-youtube', 234 ) ?>" class="promo__btn btn" target="_blank">
+          <svg class="promo__btn-icon" width="41" height="28" viewBox="0 0 41 28" fill="#fff">
+            <use xlink:href="#youtube-icon"/>
+          </svg>
+          <span class="promo__btn-name"><?php the_field( 'youtube-button-text', 234 ) ?></span>
+        </a>
       </div>
     </section>
 
