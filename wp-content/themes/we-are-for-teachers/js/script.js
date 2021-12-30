@@ -16,7 +16,7 @@
   $('.congratulations__slider').slick({
     focusOnSelect: true,
     speed: 1500,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     arrows: true,
     dots: true,
@@ -189,31 +189,27 @@
   $('.congratulations__video').each(function () {
     let href = $(this).attr('data-href'),
         videoID = href.substring(href.indexOf('v=') + 2, href.indexOf('v=') + 13);
-    $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
 
     // Autoplay/stop YouTube video if mouse focus on/off
-    $(this).on('mouseover', function () {
-      this.contentWindow.postMessage(JSON.stringify({
-        "event": "command",
-        "func": "playVideo",
-        "args": ""
-      }), "*");
-      $(this)
-          .closest('.congratulations__item')
-          .find('.congratulations__photo')
-          .toggleClass('congratulations__photo--hidden');
+    $(this).on('mouseenter', function () {
+      let isSrc = $(this).attr('src');
+      if(isSrc !== 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1') {
+        $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
+      }
+      $(this).on('click', function () {
+        this.contentWindow.postMessage(JSON.stringify({
+          "event": "command",
+          "func": "playVideo",
+          "args": ""
+        }), "*");
+      });
     });
-
-    $(this).on('mouseout', function () {
+    $(this).on('mouseleave', function () {
       this.contentWindow.postMessage(JSON.stringify({
         "event": "command",
         "func": "pauseVideo",
         "args": ""
       }), "*");
-      $(this)
-          .closest('.congratulations__item')
-          .find('.congratulations__photo')
-          .toggleClass('congratulations__photo--hidden');
     });
   });
 
