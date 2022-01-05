@@ -185,6 +185,13 @@
     }
   });
 
+  // Positions congratulation item's video & photo after click on congratulation item
+  $('.congratulations__item').each(function () {
+    $(this).on('click', function () {
+      $(this).find('.congratulations__video').toggleClass('congratulations__video--visible');
+      $(this).find('.congratulations__photo').toggleClass('congratulations__photo--hidden');
+    });
+  });
   // Change congratulation item's video attribute value (href)
   $('.congratulations__video').each(function () {
     let href = $(this).attr('data-href'),
@@ -193,7 +200,7 @@
     // Autoplay/stop YouTube video if mouse focus on/off
     $(this).on('mouseenter', function () {
       let isSrc = $(this).attr('src');
-      if(isSrc !== 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1') {
+      if (isSrc !== 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1') {
         $(this).attr('src', 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1').attr('id', videoID);
       }
       $(this).on('click', function () {

@@ -814,12 +814,14 @@ a {
   }
 
   &--sticky {
-    position: sticky;
-    top: 0;
+    @media screen and (min-width: 851px) {
+      position: sticky;
+      top: 0;
 
-    body.theme-snow & {
-      background: var(--snow-bg-main);
-      box-shadow: 0 0 10px 2px var(--light-elem-color);
+      body.theme-snow & {
+        background: var(--snow-bg-main);
+        box-shadow: 0 0 10px 2px var(--light-elem-color);
+      }
     }
   }
 
@@ -1522,15 +1524,13 @@ a {
     }
   }
 
-  &__item:hover &__photo,
-  &__item:focus &__photo {
+  .slick-current &__photo--hidden {
     z-index: 0;
     opacity: 0;
     transition-duration: .8s;
   }
 
-  &__item:hover &__video,
-  &__item:focus &__video {
+  .slick-current &__video--visible {
     z-index: 1;
   }
 }
@@ -2082,7 +2082,7 @@ a {
     max-height: 0;
     border-radius: 50%;
 
-    transform: translateY(-28px);
+    transform: translateY(-30px);
     transition: all .3s ease-out;
     cursor: pointer;
     z-index: 2;

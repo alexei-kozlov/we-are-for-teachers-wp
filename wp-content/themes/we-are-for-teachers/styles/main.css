@@ -765,13 +765,15 @@ body.theme-snow .promo__btn, body.theme-dark .promo__btn {
     background: var(--dark-nav-color);
   }
 }
-.nav--sticky {
-  position: sticky;
-  top: 0;
-}
-body.theme-snow .nav--sticky {
-  background: var(--snow-bg-main);
-  box-shadow: 0 0 10px 2px var(--light-elem-color);
+@media screen and (min-width: 851px) {
+  .nav--sticky {
+    position: sticky;
+    top: 0;
+  }
+  body.theme-snow .nav--sticky {
+    background: var(--snow-bg-main);
+    box-shadow: 0 0 10px 2px var(--light-elem-color);
+  }
 }
 @media screen and (min-width: 851px) {
   #wpadminbar + header + main .nav--sticky {
@@ -1471,12 +1473,12 @@ body.theme-dark .about__item {
     left: 9px;
   }
 }
-.congratulations__item:hover .congratulations__photo, .congratulations__item:focus .congratulations__photo {
+.slick-current .congratulations__photo--hidden {
   z-index: 0;
   opacity: 0;
   transition-duration: 0.8s;
 }
-.congratulations__item:hover .congratulations__video, .congratulations__item:focus .congratulations__video {
+.slick-current .congratulations__video--visible {
   z-index: 1;
 }
 
@@ -1971,7 +1973,7 @@ body.theme-auto .theme__input:checked + label:hover, body.theme-dark .theme__inp
   height: 50px;
   max-height: 0;
   border-radius: 50%;
-  transform: translateY(-28px);
+  transform: translateY(-30px);
   transition: all 0.3s ease-out;
   cursor: pointer;
   z-index: 2;
