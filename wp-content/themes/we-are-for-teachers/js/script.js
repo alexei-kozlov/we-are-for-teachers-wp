@@ -1,4 +1,20 @@
 ;(function ($) {
+
+  // Slider Top-Congratulations-Roll
+  $('.congratulations-roll__slider').slick({
+    vertical: true,
+    verticalSwiping: true,
+    focusOnSelect: true,
+    speed: 1500,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    dots: false,
+    cssEase: 'ease-in-out',
+    slidesToShow: 3,
+    slidesToScroll: 1
+  });
+
   // Slider Promo
   $('.promo__slider').slick({
     autoplay: true,
@@ -16,7 +32,7 @@
   $('.congratulations__slider').slick({
     focusOnSelect: true,
     speed: 1500,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
     dots: true,
@@ -142,21 +158,21 @@
       if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        $('.nav__camera-roll').addClass('nav__camera-roll--hidden');
+        $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
-        $('.nav__camera-roll').removeClass('nav__camera-roll--hidden');
+        $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
       }
     } else {
       if ($(this).scrollTop() > (header + promo + navigation)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        $('.nav__camera-roll').addClass('nav__camera-roll--hidden');
+        $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
-        $('.nav__camera-roll').removeClass('nav__camera-roll--hidden');
+        $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
       }
     }
 
@@ -192,6 +208,7 @@
       $(this).find('.congratulations__photo').toggleClass('congratulations__photo--hidden');
     });
   });
+
   // Change congratulation item's video attribute value (href)
   $('.congratulations__video').each(function () {
     let href = $(this).attr('data-href'),
@@ -223,7 +240,8 @@
   // Add trigger some events
   $(document).ready(function () {
     // Main Menu position if decor image not exists
-    if (!$('.nav__camera-roll').length) {
+    // (change nav__camera-roll on congratulations-roll__slider)
+    if (!$('.congratulations-roll__slider').length) {
       $('.nav__menu').toggleClass('nav__menu--center-mode');
     }
     $(window).trigger('scroll');

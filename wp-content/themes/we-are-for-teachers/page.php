@@ -54,7 +54,36 @@
     <section class="nav">
       <h2 class="visually-hidden">Главное меню</h2>
       <div class="inner">
-        <img class="nav__camera-roll" src="<?php the_field( 'main-menu-image', 183 ); ?>" alt="Фотопленка">
+	      <?php
+	      $args  = array(
+		      'numberposts'      => 0,
+		      'category_name'    => 'congratulations',
+		      'orderby'          => 'date',
+		      'order'            => 'ASC',
+		      'include'          => array(),
+		      'exclude'          => array(),
+		      'meta_key'         => '',
+		      'meta_value'       => '',
+		      'post_type'        => 'post',
+		      'suppress_filters' => true,
+	      );
+	      $posts = get_posts( $args ); ?>
+
+        <ul class="nav__congratulations-roll congratulations-roll__slider">
+
+	        <?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
+              <li class="congratulations-roll__item">
+                <div class="congratulations-roll__photo"
+                     style="background: url('<?php the_field( 'congratulation-poster-image' ); ?>') no-repeat center top / cover"></div>
+                <img class="congratulations-roll__frame"
+                     src="<?php bloginfo( 'template_directory' ) ?>/img/shutterstockTop-bg.png" alt="Рамка" width="274"
+                     height="274">
+              </li>
+	        <?php endforeach; ?>
+
+        </ul>
+
+        <!--<img class="nav__camera-roll" src="--><?php //the_field( 'main-menu-image', 183 ); ?><!--" alt="Фотопленка">-->
         <nav class="nav__menu">
 			<?php
 			$args = array(
