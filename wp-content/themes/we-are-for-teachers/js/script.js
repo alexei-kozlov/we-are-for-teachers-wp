@@ -159,7 +159,7 @@
       if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        $('.congratulations-roll__slider').fadeOut(1000);
+        $('.congratulations-roll__slider').fadeOut(100);
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
@@ -169,7 +169,7 @@
       if ($(this).scrollTop() > (header + promo + navigation)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        $('.congratulations-roll__slider').fadeOut(1000);
+        $('.congratulations-roll__slider').fadeOut(100);
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
