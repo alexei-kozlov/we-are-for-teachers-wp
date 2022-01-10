@@ -264,6 +264,10 @@ body.theme-snow .social__icon, body.theme-dark .social__icon {
   }
 }
 
+.wow {
+  visibility: hidden;
+}
+
 /*--------------Slick-Slider--------------*/
 .slick-slider {
   width: 100%;
@@ -750,27 +754,6 @@ body.theme-snow .promo__btn, body.theme-dark .promo__btn {
   background: #612b1c;
   top: -80px;
   transition-duration: 0.5s;
-  /*
-  &__camera-roll {
-    position: absolute;
-    right: calc(100% - 274px);
-    bottom: 0;
-
-    @media screen and (max-width: 1200px) {
-      right: calc(100% - 266px);
-      bottom: 100%;
-    }
-    @media screen and (max-width: 850px) {
-      display: none;
-    }
-
-    &--hidden {
-      @media screen and (min-width: 851px) {
-        display: none;
-      }
-    }
-  }
-  */
 }
 @media screen and (min-width: 851px) {
   body.theme-snow .nav {
@@ -857,6 +840,7 @@ body.theme-snow .promo__btn, body.theme-dark .promo__btn {
   right: calc(100% - 258px);
   bottom: 0;
   width: 260px;
+  transition-duration: 0.4s;
 }
 @media screen and (max-width: 1200px) {
   .nav .congratulations-roll__slider {
@@ -865,11 +849,6 @@ body.theme-snow .promo__btn, body.theme-dark .promo__btn {
 }
 @media screen and (max-width: 850px) {
   .nav .congratulations-roll__slider {
-    display: none;
-  }
-}
-@media screen and (min-width: 851px) {
-  .nav .congratulations-roll__slider--hidden {
     display: none;
   }
 }

@@ -308,6 +308,10 @@ a {
   }
 }
 
+.wow {
+  visibility: hidden;
+}
+
 /*--------------Slick-Slider--------------*/
 .slick-slider {
   width: 100%;
@@ -882,27 +886,6 @@ a {
     }
   }
 
-  /*
-  &__camera-roll {
-    position: absolute;
-    right: calc(100% - 274px);
-    bottom: 0;
-
-    @media screen and (max-width: 1200px) {
-      right: calc(100% - 266px);
-      bottom: 100%;
-    }
-    @media screen and (max-width: 850px) {
-      display: none;
-    }
-
-    &--hidden {
-      @media screen and (min-width: 851px) {
-        display: none;
-      }
-    }
-  }
-  */
   // Slider Vertical
   .congratulations-roll {
 
@@ -911,6 +894,7 @@ a {
       right: calc(100% - 258px);
       bottom: 0;
       width: 260px;
+      transition-duration: .4s;
 
       @media screen and (max-width: 1200px) {
         bottom: 100%;
@@ -919,11 +903,11 @@ a {
         display: none;
       }
 
-      &--hidden {
-        @media screen and (min-width: 851px) {
-          display: none;
-        }
-      }
+      //&--hidden {
+      //  @media screen and (min-width: 851px) {
+      //    display: none;
+      //  }
+      //}
     }
 
     & .slick-vertical .slick-slide {
@@ -1137,19 +1121,6 @@ a {
       overflow: auto;
       flex-wrap: nowrap;
     }
-    //@media screen and (max-width: 782px) {
-    //  top: 84px;
-    //  transition-duration: inherit;
-    //}
-    //@media (max-width: 772px) and (orientation: portrait) {
-    //  top: 130px;
-    //  height: calc(100vh - 130px);
-    //}
-    //@media (max-width: 772px) and (orientation: landscape) {
-    //  top: 130px;
-    //  width: 100vw;
-    //  height: calc(100vh - 130px);
-    //}
     @media screen and (max-width: 560px) {
       top: 174px;
       height: calc(100vh - 174px);
@@ -1167,14 +1138,6 @@ a {
       top: 176px;
       transition-duration: inherit;
     }
-    //@media (max-width: 772px) and (orientation: portrait) {
-    //  top: 170px;
-    //  height: calc(100vh - 170px);
-    //}
-    //@media (max-width: 772px) and (orientation: landscape) {
-    //  top: 170px;
-    //  height: calc(100vh - 170px);
-    //}
     @media screen and (max-width: 560px) {
       top: 220px;
       height: calc(100vh - 220px);

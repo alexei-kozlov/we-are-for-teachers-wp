@@ -9,7 +9,8 @@
 
   <main id="primary" class="site-main">
     <section class="promo" id="promo">
-      <div class="inner">
+      <div class="inner wow animate__fadeInLeft"
+           data-wow-duration="1s">
         <h1 class="promo__title title"><?php echo get_the_title(); ?></h1>
 		  <?php
 		  $args  = array(
@@ -69,7 +70,8 @@
 	      );
 	      $posts = get_posts( $args ); ?>
 
-        <ul class="nav__congratulations-roll congratulations-roll__slider">
+        <ul class="nav__congratulations-roll congratulations-roll__slider wow animate__fadeInDown"
+            data-wow-duration="1s">
 
 	        <?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
               <li class="congratulations-roll__item">
@@ -102,8 +104,10 @@
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="inner">
+    <section id="about" class="about">
+      <div class="inner wow animate__fadeInUp"
+           data-wow-duration="1s"
+           data-wow-offset="200">
 		  <?php
 		  $args  = array(
 			  'numberposts'      => 0,
@@ -156,8 +160,14 @@
 		  );
 		  $posts = get_posts( $args ); ?>
 
-        <h2 class="congratulations__title title"><?php echo get_cat_name( 6 ); ?></h2>
-        <ul class="congratulations__slider">
+        <h2 class="congratulations__title title wow animate__fadeInLeft"
+            data-wow-duration="1s"
+            data-wow-offset="200">
+            <?php echo get_cat_name( 6 ); ?>
+        </h2>
+        <ul class="congratulations__slider wow animate__fadeInRight"
+            data-wow-duration="1s"
+            data-wow-offset="200">
 
 			<?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
               <li class="congratulations__item">
@@ -195,9 +205,20 @@
 		  $posts = get_posts( $args ); ?>
 
         <h2 class="visually-hidden"><?php echo get_cat_name( 7 ); ?></h2>
-        <p class="cards__title title"><?php the_field( 'section-title', 199 ); ?></p>
-        <p class="cards__subtitle"><?php the_field( 'section-subtitle', 199 ); ?></p>
-        <ul class="cards__slider">
+        <p class="cards__title title wow animate__fadeInUp"
+            data-wow-duration="1s"
+            data-wow-offset="200">
+            <?php the_field( 'section-title', 199 ); ?>
+        </p>
+        <p class="cards__subtitle wow animate__fadeInUp"
+            data-wow-duration="1s"
+            data-wow-offset="200">
+            <?php the_field( 'section-subtitle', 199 ); ?>
+
+        </p>
+        <ul class="cards__slider wow animate__fadeInDown"
+            data-wow-duration="1s"
+            data-wow-offset="200">
 
 			<?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
               <li class="cards__item">

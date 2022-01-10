@@ -1,5 +1,6 @@
 <footer class="footer">
-  <div class="inner">
+  <div class="inner wow animate__fadeInUp"
+       data-wow-duration="1s">
     <div class="light-logo"><?php the_custom_logo(); ?></div>
     <div class="dark-logo"><?php the_custom_logo(); ?></div>
 
@@ -88,6 +89,7 @@
 <div class="snowfall"></div>
 
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/jquery-3.5.1.js" defer></script>
+<script src="<?php bloginfo( 'template_directory' ) ?>/js/wow.min.js" defer></script>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/slick.min.js" defer></script>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/script.js" defer></script>
 

@@ -1,4 +1,5 @@
 ;(function ($) {
+  new WOW().init();
 
   // Slider Top-Congratulations-Roll
   $('.congratulations-roll__slider').slick({
@@ -158,21 +159,25 @@
       if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
+        // $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
+        $('.congratulations-roll__slider').fadeOut(1000);
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
-        $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
+        // $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
+        $('.congratulations-roll__slider').fadeIn(1000);
       }
     } else {
       if ($(this).scrollTop() > (header + promo + navigation)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
+        // $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
+        $('.congratulations-roll__slider').fadeOut(1000);
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
-        $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
+        // $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
+        $('.congratulations-roll__slider').fadeIn(1000);
       }
     }
 

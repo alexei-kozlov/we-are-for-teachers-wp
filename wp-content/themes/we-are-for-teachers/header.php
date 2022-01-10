@@ -8,6 +8,7 @@
 	<?php wp_head(); ?>
   <link rel="icon" href="<?php bloginfo( 'template_directory' ) ?>/img/favicon.ico"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/animate.min.css">
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/slick.css">
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/main.css">
   <title><?php bloginfo( 'name' ); ?> | <?php bloginfo( 'description' ); ?></title>
@@ -51,7 +52,8 @@
 <?php wp_body_open(); ?>
 
 <header class="header">
-  <div class="inner">
+  <div class="inner wow animate__fadeInRight"
+       data-wow-duration="1s">
     <div class="light-logo"><?php the_custom_logo(); ?></div>
     <div class="dark-logo"><?php the_custom_logo(); ?></div>
 
