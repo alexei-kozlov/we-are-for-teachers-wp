@@ -1,6 +1,5 @@
 <footer class="footer">
-  <div class="inner wow animate__fadeInUp"
-       data-wow-duration="1s">
+  <div class="inner">
     <div class="light-logo"><?php the_custom_logo(); ?></div>
     <div class="dark-logo"><?php the_custom_logo(); ?></div>
 
