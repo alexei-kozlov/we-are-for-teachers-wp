@@ -1,4 +1,5 @@
 ;(function ($) {
+  // Call wow-animation function
   new WOW().init();
 
   // Slider Top-Congratulations-Roll
@@ -33,8 +34,7 @@
   $('.congratulations__slider').slick({
     focusOnSelect: true,
     speed: 1500,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    autoplay: false,
     arrows: true,
     dots: true,
     cssEase: 'ease-in-out',
@@ -159,24 +159,20 @@
       if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        // $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
         $('.congratulations-roll__slider').fadeOut(1000);
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
-        // $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
         $('.congratulations-roll__slider').fadeIn(1000);
       }
     } else {
       if ($(this).scrollTop() > (header + promo + navigation)) {
         $('.nav').addClass('nav--sticky');
         $('.nav .inner').addClass('inner--sticky');
-        // $('.congratulations-roll__slider').addClass('congratulations-roll__slider--hidden');
         $('.congratulations-roll__slider').fadeOut(1000);
       } else {
         $('.nav').removeClass('nav--sticky');
         $('.nav .inner').removeClass('inner--sticky');
-        // $('.congratulations-roll__slider').removeClass('congratulations-roll__slider--hidden');
         $('.congratulations-roll__slider').fadeIn(1000);
       }
     }
@@ -242,22 +238,9 @@
     });
   });
 
-  // Add trigger some events
   $(document).ready(function () {
-    // Main Menu position if decor image not exists
-    // (change nav__camera-roll on congratulations-roll__slider)
-    if (!$('.congratulations-roll__slider').length) {
-      $('.nav__menu').toggleClass('nav__menu--center-mode');
-    }
-    $(window).trigger('scroll');
 
-    // Add snowflakes
-    for (let i = 1; i <= 100; i++) {
-      $('.snowfall').append($('<div/>', {class: 'snowflake'}))
-    }
-  });
-
-  $(document).ready(function () {
+    // Initialize dark-custom-logo function
     $('.dark-logo .custom-logo').each(function () {
       $(this).attr('src', $(this).attr('src').replace('footer-', 'dark-'));
     });
@@ -291,5 +274,18 @@
         applyTheme($(this).attr('value'));
       });
     });
+
+    // Main Menu position if decor image not exists
+    // (change nav__camera-roll on congratulations-roll__slider)
+    if (!$('.congratulations-roll__slider').length) {
+      $('.nav__menu').toggleClass('nav__menu--center-mode');
+    }
+
+    // Add snowflakes
+    for (let i = 1; i <= 100; i++) {
+      $('.snowfall').append($('<div/>', {class: 'snowflake'}))
+    }
+
+    $(window).trigger('scroll');
   });
 })(jQuery);
