@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="ru">
+<html lang="<?php bloginfo( 'language' ) ?>">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="<?php bloginfo( 'charset' ) ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="Учитель, ученик, поздравление, открытка, подарок, день знаний, 1 сентября">
   <meta name="description" content="С нашей помощью вы сможете сделать поздравительную открытку для своего учителя">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/animate.min.css">
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/slick.css">
   <link rel="stylesheet" href="<?php bloginfo( 'template_directory' ) ?>/styles/main.css">
-  <title><?php bloginfo( 'name' ); ?> | <?php bloginfo( 'description' ); ?></title>
+  <title><?php bloginfo( 'name' ) ?> | <?php bloginfo( 'description' ) ?></title>
 </head>
 
 <body>

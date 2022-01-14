@@ -1,60 +1,53 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ * Template Name: Error-404
  *
- * @package We_are_for_Teachers
  */
-
-get_header();
 ?>
+<?php get_header(); ?>
 
-	<main id="primary" class="site-main">
+  <main id="primary" class="site-main">
 
-		<section class="error-404 not-found" style="display: flex; flex-direction: column; align-items: center;">
-			<header class="page-header">
-				<h1 class="page-title title" style="font-size: 200px;"><?php esc_html_e( '404', 'we-are-for-teachers' ); ?></h1>
-        <p style="text-align: center;"><?php esc_html_e( 'Ой! Страница не найдена...', 'we-are-for-teachers' ); ?></p>
-			</header><!-- .page-header -->
+    <section class="nav">
+      <h2 class="visually-hidden">Главное меню</h2>
+      <div class="inner inner--secondary">
+        <nav class="nav__menu">
+			<?php
+			$args = array(
+				'menu'            => 'Меню в шапке',
+				'menu_class'      => 'nav__list',
+				'container'       => 'ul',
+				'container_class' => 'nav__list',
+				'fallback_cb'     => 'wp_page_menu',
+				'echo'            => '0',
+				'depth'           => '0',
+				'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+			);
+			$menu = wp_nav_menu( $args );
+			if ( ! is_front_page() ) {
+				$menu = preg_replace( '~<li~', '<li class="menu-item"><a href="' . home_url() . '" title="На главную"><img width="100" height="100" src="' . home_url() . '/wp-content/uploads/2022/01/school-home-icon.png" class="_mi _before _image" alt="" loading="lazy" aria-hidden="true"><span>Главная</span></a></li><li', $menu, 1 );
+			}
+			echo $menu;
+			?>
+        </nav>
+      </div>
+    </section>
 
-			<div class="page-content">
-				<p style="text-align: center;"><?php esc_html_e( 'Похоже, что ничего не удалось найти. Быть может Вам подойдет одна из ссылок ниже или поиск?', 'we-are-for-teachers' ); ?></p>
+    <section class="error-404 not-found">
+      <header class="page-header">
+        <h1 class="page-title title"><?php esc_html_e( '404', 'we-are-for-teachers' ); ?></h1>
+        <p class="page-subtitle"><?php esc_html_e( 'Ой! Запрашиваемая страница не найдена...', 'we-are-for-teachers' ); ?></p>
+      </header><!-- .page-header -->
 
-					<?php
-					get_search_form();
+      <div class="page-content">
+        <p style="text-align: center;"><?php esc_html_e( 'Похоже, что ничего не удалось найти. Попробуйте вернуться на главную страницу, воспользуйтесь одним из пунктов меню или поиском по сайту!', 'we-are-for-teachers' ); ?></p>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+		  <?php get_search_form(); ?>
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title title"><?php esc_html_e( 'Часто используемые категории', 'we-are-for-teachers' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
+      </div><!-- .page-content -->
+    </section><!-- .error-404 -->
 
-					<?php
-					$we_are_for_teachers_archive_content = '<p style="text-align: center;">' . esc_html__( 'Попробуйте поискать в ежемесячных архивах', 'we-are-for-teachers' ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$we_are_for_teachers_archive_content" );
+  </main><!-- #main -->
 
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>

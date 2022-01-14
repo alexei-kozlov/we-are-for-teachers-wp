@@ -50,7 +50,10 @@ if ( ! function_exists( 'we_are_for_teachers_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'we-are-for-teachers' ),
+				'menu-1' => esc_html__( 'Header-Primary', 'we-are-for-teachers' ),
+				'menu-2' => esc_html__( 'Header-Secondary', 'we-are-for-teachers' ),
+				'menu-3' => esc_html__( 'Footer-Primary', 'we-are-for-teachers' ),
+				'menu-4' => esc_html__( 'Footer-Secondary', 'we-are-for-teachers' ),
 			)
 		);
 
@@ -177,6 +180,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
-add_theme_support( 'custom-logo' );
-add_theme_support( 'post-thumbnails', array( 'post' ) );

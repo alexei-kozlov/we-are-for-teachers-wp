@@ -867,11 +867,29 @@ a {
       right: -100%;
     }
 
+    &--secondary {
+      @media screen and (min-width: 851px) {
+        min-height: 80px;
+        justify-content: space-around;
+        padding: 10px;
+      }
+    }
+
     &--sticky {
       @media screen and (min-width: 851px) {
         justify-content: space-around;
         min-height: 80px;
         padding: 10px;
+
+        .nav {
+          &__menu {
+            max-width: 100%;
+          }
+
+          &__list li {
+            margin: 0 10px;
+          }
+        }
       }
     }
 
@@ -888,7 +906,6 @@ a {
 
   // Slider Vertical
   .congratulations-roll {
-
     &__slider {
       position: absolute;
       right: calc(100% - 258px);
@@ -1059,6 +1076,7 @@ a {
     display: block;
 
     &--center-mode {
+      max-width: 100%;
       margin: 0 auto;
     }
   }
@@ -1104,11 +1122,11 @@ a {
     }
     @media screen and (max-width: 850px) {
       position: fixed;
-      top: 130px;
+      --top: 130px;
       right: 0;
       width: 300px;
-      height: 50vh;
-      padding-top: 20px;
+      height: calc(100vh - var(--top));
+      padding: 20px 0 30px;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
@@ -1116,8 +1134,8 @@ a {
       flex-wrap: nowrap;
     }
     @media screen and (max-width: 560px) {
-      top: 174px;
-      height: calc(100vh - 174px);
+      --top: 174px;
+      height: calc(100vh - var(--top));
     }
     @media screen and (max-width: 425px) {
       width: 100vw;
@@ -1148,28 +1166,36 @@ a {
     }
   }
 
-  &__list .menu-item img._before {
-    vertical-align: middle;
-    margin-right: 18px;
+  &__list .menu-item ._image {
     width: 62px;
     height: auto;
+    vertical-align: middle;
 
     @media screen and (max-width: 850px) {
       width: 40px;
     }
   }
 
-  &__list li {
+  &__list .menu-item {
+    margin: 0 10px;
     list-style: none;
-    text-align: left;
+    text-align: center;
+    flex-grow: 1;
 
     @media screen and (max-width: 850px) {
       margin-left: 50px;
       padding: 10px 0 10px 0;
+      flex-grow: 0;
     }
   }
 
-  &__list li a {
+  &__list .menu-item.active_page_item a span::before {
+    width: 99%;
+    left: 0;
+    transition: all 0.5s ease;
+  }
+
+  &__list .menu-item a {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -1186,7 +1212,7 @@ a {
     }
   }
 
-  &__list li a span {
+  &__list .menu-item a span {
     font-family: Montserrat, Arial, sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -1955,7 +1981,7 @@ a {
   }
 }
 
-/*---------------Theme-Toggle----------------*/
+/*-------------Theme-Toggle---------------*/
 .theme {
   position: relative;
   display: flex;
@@ -2169,3 +2195,82 @@ a {
   }
 }
 
+/*------------Error(404)-Page-------------*/
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  background: #fff06a;
+  border-bottom: 1px solid #612b1c;
+
+  body.theme-dark & {
+    background: var(--dark-back-color);
+    border-bottom: transparent;
+  }
+
+  body.theme-snow & {
+    background: var(--snow-bg-section);
+    border-bottom: transparent;
+  }
+
+  body.theme-auto & {
+    @media (prefers-color-scheme: dark) {
+      background: var(--dark-back-color);
+      border-bottom: transparent;
+    }
+  }
+
+  .page-title {
+    font-size: 200px;
+  }
+
+  .page-subtitle {
+    text-align: center;
+  }
+
+  .search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-field {
+    padding: 4px;
+  }
+
+  .search-submit {
+    padding: 0.5em 1em;
+    cursor: pointer;
+  }
+}
+
+/*---------------Blog-List----------------*/
+.blog {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__item {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+
+    body.theme-snow & {
+      background: var(--snow-bg-item);
+    }
+
+    body.theme-dark & {
+      background: var(--dark-item-color);
+    }
+
+    body.theme-auto & {
+      @media (prefers-color-scheme: dark) {
+        background: var(--dark-item-color);
+      }
+    }
+  }
+}

@@ -90,15 +90,14 @@
         }
       }
     ]
-  })
-      .on('beforeChange', (event, slick, currentSlide, nextSlide) => {
-        if (currentSlide !== nextSlide) {
-          $('.slick-center + .slick-cloned').each(function () {
-            // Timeout required or Slick will overwrite the classes
-            setTimeout(() => this.classList.add('slick-current', 'slick-center'));
-          });
-        }
+  }).on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+    if (currentSlide !== nextSlide) {
+      $('.slick-center + .slick-cloned').each(function () {
+        // Timeout required or Slick will overwrite the classes
+        setTimeout(() => this.classList.add('slick-current', 'slick-center'));
       });
+    }
+  });
 
   // Function - Add anchor links and scrolling on them
   function anchorLink(link, id) {
@@ -141,8 +140,15 @@
     $('.nav__menu-field').toggleClass('nav__menu-field--active');
   });
 
-  // Toggle mobile-menu after choose menu-item
+  // Toggle mobile-menu after choose menu-item and change class for current-menu-item
   $('.menu-item').on('click', function () {
+    /*localStorage.setItem('num', $(this).index());
+    let savedNum = localStorage.getItem('num');
+    $('.menu-item').removeClass('active_page_item');
+    $(`.menu-item:nth-of-type(${savedNum})`).addClass('active_page_item');*/
+    // $('.menu-item').removeClass('active_page_item');
+    // $(this).toggleClass('active_page_item');
+
     $('.nav .inner').removeClass('inner--menu-wrapper');
     $('.nav__menu').toggleClass('nav__menu--active');
     $('.nav__menu-field').toggleClass('nav__menu-field--active');
@@ -151,30 +157,21 @@
   $(window).on('scroll', function () {
 
     // Navigation work as sticky-fixed after scroll
-    let header = $('.header').height();
-    let promo = $('.promo').height();
-    let navigation = 248;
-    let wpadminbar = $('#wpadminbar').height();
-    if (wpadminbar) {
-      if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
-        $('.nav').addClass('nav--sticky');
-        $('.nav .inner').addClass('inner--sticky');
-        $('.congratulations-roll__slider').fadeOut(100);
-      } else {
-        $('.nav').removeClass('nav--sticky');
-        $('.nav .inner').removeClass('inner--sticky');
-        $('.congratulations-roll__slider').fadeIn(1000);
-      }
+    let promoBlock = $('.promo'),
+        innerBlock = $('.nav .inner--secondary'),
+        adminBarBlock = $('#wpadminbar');
+    let header = $('.header').height(),
+        promo = promoBlock.length > 0 ? promoBlock.height() : 0,
+        navigation = innerBlock.length > 0 ? innerBlock.height() : 248,
+        wpadminbar = adminBarBlock.length > 0 ? adminBarBlock.height() : 0;
+    if ($(this).scrollTop() > (header + promo + navigation + wpadminbar)) {
+      $('.nav').addClass('nav--sticky');
+      $('.nav .inner').addClass('inner--sticky');
+      $('.congratulations-roll__slider').fadeOut(100);
     } else {
-      if ($(this).scrollTop() > (header + promo + navigation)) {
-        $('.nav').addClass('nav--sticky');
-        $('.nav .inner').addClass('inner--sticky');
-        $('.congratulations-roll__slider').fadeOut(100);
-      } else {
-        $('.nav').removeClass('nav--sticky');
-        $('.nav .inner').removeClass('inner--sticky');
-        $('.congratulations-roll__slider').fadeIn(1000);
-      }
+      $('.nav').removeClass('nav--sticky');
+      $('.nav .inner').removeClass('inner--sticky');
+      $('.congratulations-roll__slider').fadeIn(100);
     }
 
     // Correction navigation list after scrolling
@@ -287,5 +284,6 @@
     }
 
     $(window).trigger('scroll');
+    $('.menu-item').trigger('click');
   });
 })(jQuery);

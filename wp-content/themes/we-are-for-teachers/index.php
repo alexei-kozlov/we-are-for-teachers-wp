@@ -1,24 +1,53 @@
 <?php
 /**
- * The main template file
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * Template Name: Блог
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package We_are_for_Teachers
  */
-get_header();
 ?>
+<?php get_header(); ?>
 
-	<main id="primary" class="site-main">
+  <main id="primary" class="site-main">
 
-	  <h1 class="title">Ой, что-то пошло не так! :-(</h1>
+    <section class="nav">
+      <h2 class="visually-hidden">Главное меню</h2>
+      <div class="inner inner--secondary">
+        <nav class="nav__menu">
+			<?php
+			$args = array(
+				'menu'            => 'Меню в шапке',
+				'menu_class'      => 'nav__list',
+				'container'       => 'ul',
+				'container_class' => 'nav__list',
+				'fallback_cb'     => 'wp_page_menu',
+				'echo'            => '0',
+				'depth'           => '0',
+				'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+			);
+			$menu = wp_nav_menu( $args );
+			if ( ! is_front_page() ) {
+				$menu = preg_replace( '~<li~', '<li class="menu-item"><a href="' . home_url() . '" title="На главную"><img width="100" height="100" src="' . home_url() . '/wp-content/uploads/2022/01/school-home-icon.png" class="_mi _before _image" alt="" loading="lazy" aria-hidden="true"><span>Главная</span></a></li><li', $menu, 1 );
+			}
+			echo $menu;
+			?>
+        </nav>
+      </div>
+    </section>
 
-	</main><!-- #main -->
+    <section class="blog">
+      <div class="inner">
+		  <?php while ( have_posts() ) : the_post(); ?>
+            <div class="blog__item">
+              <h2 class="blog__title"><?php the_title() ?></h2>
+              <span><?php the_time( 'j F Y' ); ?></span>
+              <p><?php the_excerpt(); ?></p>
+              <p><?php the_tags(); ?></p>
+              <a href="<?php echo get_permalink() ?>">Читать полностью</a>
+            </div>
+		  <?php endwhile; ?>
+      </div>
+    </section>
 
-<?php
-get_footer();
+  </main>
+
+<?php get_footer(); ?>

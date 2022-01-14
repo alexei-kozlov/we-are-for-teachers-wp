@@ -5,7 +5,7 @@
 
 	  <?php
 	  $args = array(
-		  'menu'            => 'footer',
+		  'menu'            => 'Меню в подвале',
 		  'menu_class'      => 'footer__menu',
 		  'container'       => 'ul',
 		  'container_class' => 'footer__menu',
@@ -86,7 +86,7 @@
 
 <a href="#" class="up-button"></a>
 <div class="snowfall"></div>
-
+<?php wp_footer(); ?>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/jquery-3.5.1.js" defer></script>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/wow.min.js" defer></script>
 <script src="<?php bloginfo( 'template_directory' ) ?>/js/slick.min.js" defer></script>

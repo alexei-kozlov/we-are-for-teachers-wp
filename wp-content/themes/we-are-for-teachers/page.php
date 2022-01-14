@@ -1,5 +1,5 @@
 <?php
-/*
+/**
   *
   Template Name: Главная
   *
@@ -55,25 +55,25 @@
     <section class="nav">
       <h2 class="visually-hidden">Главное меню</h2>
       <div class="inner">
-	      <?php
-	      $args  = array(
-		      'numberposts'      => 0,
-		      'category_name'    => 'congratulations',
-		      'orderby'          => 'date',
-		      'order'            => 'ASC',
-		      'include'          => array(),
-		      'exclude'          => array(),
-		      'meta_key'         => '',
-		      'meta_value'       => '',
-		      'post_type'        => 'post',
-		      'suppress_filters' => true,
-	      );
-	      $posts = get_posts( $args ); ?>
+		  <?php
+		  $args  = array(
+			  'numberposts'      => 0,
+			  'category_name'    => 'congratulations',
+			  'orderby'          => 'date',
+			  'order'            => 'ASC',
+			  'include'          => array(),
+			  'exclude'          => array(),
+			  'meta_key'         => '',
+			  'meta_value'       => '',
+			  'post_type'        => 'post',
+			  'suppress_filters' => true,
+		  );
+		  $posts = get_posts( $args ); ?>
 
         <ul class="nav__congratulations-roll congratulations-roll__slider wow animate__fadeInDown"
             data-wow-duration="1s">
 
-	        <?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
+			<?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
               <li class="congratulations-roll__item">
                 <div class="congratulations-roll__photo"
                      style="background: url('<?php the_field( 'congratulation-poster-image' ); ?>') no-repeat center top / cover"></div>
@@ -81,15 +81,14 @@
                      src="<?php bloginfo( 'template_directory' ) ?>/img/shutterstockTop-bg.png" alt="Рамка" width="274"
                      height="274">
               </li>
-	        <?php endforeach; ?>
+			<?php endforeach; ?>
 
         </ul>
 
-        <!--<img class="nav__camera-roll" src="--><?php //the_field( 'main-menu-image', 183 ); ?><!--" alt="Фотопленка">-->
         <nav class="nav__menu">
 			<?php
 			$args = array(
-				'menu'            => 'main',
+				'menu'            => 'Меню в шапке',
 				'menu_class'      => 'nav__list',
 				'container'       => 'ul',
 				'container_class' => 'nav__list',
@@ -163,7 +162,7 @@
         <h2 class="congratulations__title title wow animate__fadeInLeft"
             data-wow-duration="1s"
             data-wow-offset="200">
-            <?php echo get_cat_name( 6 ); ?>
+			<?php echo get_cat_name( 6 ); ?>
         </h2>
         <ul class="congratulations__slider wow animate__fadeInRight"
             data-wow-duration="1s"
@@ -206,14 +205,14 @@
 
         <h2 class="visually-hidden"><?php echo get_cat_name( 7 ); ?></h2>
         <p class="cards__title title wow animate__fadeInUp"
-            data-wow-duration="1s"
-            data-wow-offset="200">
-            <?php the_field( 'section-title', 199 ); ?>
+           data-wow-duration="1s"
+           data-wow-offset="200">
+			<?php the_field( 'section-title', 199 ); ?>
         </p>
         <p class="cards__subtitle wow animate__fadeInUp"
-            data-wow-duration="1s"
-            data-wow-offset="200">
-            <?php the_field( 'section-subtitle', 199 ); ?>
+           data-wow-duration="1s"
+           data-wow-offset="200">
+			<?php the_field( 'section-subtitle', 199 ); ?>
 
         </p>
         <ul class="cards__slider wow animate__fadeInDown"
