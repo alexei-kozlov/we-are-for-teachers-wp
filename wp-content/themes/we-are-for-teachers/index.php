@@ -46,6 +46,8 @@
             </div>
 		  <?php endwhile; ?>
       </div>
+
+	    <?php the_posts_pagination(); ?>
     </section>
 
   </main>

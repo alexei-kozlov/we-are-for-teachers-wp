@@ -1123,6 +1123,7 @@ a {
     @media screen and (max-width: 850px) {
       position: fixed;
       --top: 130px;
+      top: var(--top);
       right: 0;
       width: 300px;
       height: calc(100vh - var(--top));
@@ -1135,6 +1136,7 @@ a {
     }
     @media screen and (max-width: 560px) {
       --top: 174px;
+      top: var(--top);
       height: calc(100vh - var(--top));
     }
     @media screen and (max-width: 425px) {
@@ -1151,8 +1153,9 @@ a {
       transition-duration: inherit;
     }
     @media screen and (max-width: 560px) {
-      top: 220px;
-      height: calc(100vh - 220px);
+      --top: 220px;
+      top: var(--top);
+      height: calc(100vh - var(--top));
     }
 
     &--higher {
@@ -1160,8 +1163,9 @@ a {
         top: 130px;
       }
       @media screen and (max-width: 560px) {
-        top: 174px;
-        height: calc(100vh - 174px);
+        --top: 174px;
+        top: var(--top);
+        height: calc(100vh - var(--top));
       }
     }
   }
