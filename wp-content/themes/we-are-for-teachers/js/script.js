@@ -284,6 +284,6 @@
     }
 
     $(window).trigger('scroll');
-    $('.menu-item').trigger('click');
+    // $('.menu-item').trigger('click');
   });
 })(jQuery);

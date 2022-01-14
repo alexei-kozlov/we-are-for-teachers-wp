@@ -1,9 +1,9 @@
 <?php
 /**
-  *
-  Template Name: Главная
-  *
-  */
+ *
+ * Template Name: Главная
+ *
+ */
 ?>
 <?php get_header(); ?>
 
@@ -32,14 +32,12 @@
                class="promo__quote-icon" width="25" height="28">
           <blockquote class="promo__blockquote">
             <ul class="promo__slider">
-
 				<?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
                   <li class="promo__item">
                     <p class="promo__text"><?php the_title(); ?></p>
                     <p class="promo__author"><?php the_field( 'quote-author' ) ?></p>
                   </li>
 				<?php endforeach; ?>
-
             </ul>
           </blockquote>
         </div>
@@ -72,7 +70,6 @@
 
         <ul class="nav__congratulations-roll congratulations-roll__slider wow animate__fadeInDown"
             data-wow-duration="1s">
-
 			<?php foreach ( $posts as $post ) : setup_postdata( $post ); ?>
               <li class="congratulations-roll__item">
                 <div class="congratulations-roll__photo"
@@ -82,7 +79,6 @@
                      height="274">
               </li>
 			<?php endforeach; ?>
-
         </ul>
 
         <nav class="nav__menu">

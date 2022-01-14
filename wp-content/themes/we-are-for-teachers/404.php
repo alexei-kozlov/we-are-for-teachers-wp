@@ -26,7 +26,7 @@
 			);
 			$menu = wp_nav_menu( $args );
 			if ( ! is_front_page() ) {
-				$menu = preg_replace( '~<li~', '<li class="menu-item"><a href="' . home_url() . '" title="На главную"><img width="100" height="100" src="' . home_url() . '/wp-content/uploads/2022/01/school-home-icon.png" class="_mi _before _image" alt="" loading="lazy" aria-hidden="true"><span>Главная</span></a></li><li', $menu, 1 );
+				$menu = preg_replace( '~<li~', '<li class="menu-item"><a href="' . home_url() . '"><img width="100" height="100" src="' . home_url() . '/wp-content/uploads/2022/01/school-home-icon.png" class="_mi _before _image" alt="" loading="lazy" aria-hidden="true"><span>Главная</span></a></li><li', $menu, 1 );
 			}
 			echo $menu;
 			?>
